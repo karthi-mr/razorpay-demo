@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 @Slf4j
 public class PaymentService {
 
@@ -30,11 +30,16 @@ public class PaymentService {
     @Value("${application.razorpay.key.secret}")
     private String razorpayKeySecret;
 
+    public PaymentService(PaymentRepository repository) {
+        log.info("Payment service initialized");
+        this.repository = repository;
+    }
+
     public Map<String, Object> createOrder(@NonNull CreateOrderRequest request) throws RazorpayException {
         log.info("Creating order...");
         RazorpayClient razorpayClient = new RazorpayClient(razorpayKeyId, razorpayKeySecret);
         JSONObject orderRequest = new JSONObject();
-        orderRequest.put("amount", request.amount() * 100);
+        orderRequest.put("amount", request.amount() * 100L);
         orderRequest.put("currency", "INR");
         orderRequest.put("receipt", "receipt_" + System.currentTimeMillis());
 
@@ -42,7 +47,7 @@ public class PaymentService {
 
         Payment payment = Payment.builder()
                 .orderId(order.get("id"))
-                .amount(order.get("amount"))
+                .amount(Long.parseLong(order.get("amount").toString()))
                 .currency(order.get("currency"))
                 .receipt(order.get("receipt"))
                 .status(PaymentStatus.PENDING)

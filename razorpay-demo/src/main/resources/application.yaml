@@ -16,5 +16,5 @@ server:
 application:
   razorpay:
     key:
-      id: rzp_test_SNyVkcCDBSpcuj
-      secret: coQvPEy6RYHt45GS7KWM2SY6
+      id: ${RAZORPAY_KEY_ID}
+      secret: ${RAZORPAY_KEY_SECRET}
