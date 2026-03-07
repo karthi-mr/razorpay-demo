@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: razorpay-demo
+
+server:
+  port: 8082
+
+application:
+  razorpay:
+    key:
+      id: rzp_test_SNyVkcCDBSpcuj
+      secret: coQvPEy6RYHt45GS7KWM2SY6
