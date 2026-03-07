@@ -1,6 +1,14 @@
 spring:
   application:
     name: razorpay-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5433/razorpay_demo
+    username: admin
+    password: admin@321
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
 
 server:
   port: 8082

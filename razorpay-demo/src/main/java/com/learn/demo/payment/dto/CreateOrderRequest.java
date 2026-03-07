@@ -1,6 +1,4 @@
-package com.learn.demo.dto;
-
-import java.math.BigDecimal;
+package com.learn.demo.payment.dto;
 
 public record CreateOrderRequest(
         Integer amount

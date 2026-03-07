@@ -1,4 +1,4 @@
-package com.learn.demo.dto;
+package com.learn.demo.payment.dto;
 
 public record VerifyPaymentRequest(
         String razorpayOrderId,
